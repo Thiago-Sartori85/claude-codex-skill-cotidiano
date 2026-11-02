@@ -1,77 +1,44 @@
-# Skill Packs
+# Claude & Codex — Skills do Cotidiano
 
-**🇧🇷 Português** · [🇺🇸 English](README.en.md)
+[Português](README.md) | [English](README.en.md)
 
-Coleção pública, versionada e extensível de **Agent Skills** para **OpenAI Codex** e **Claude Code**. Cada skill encapsula um fluxo de trabalho especializado, com instruções, referências e checklists reutilizáveis.
+Coleção pública de Agent Skills para OpenAI Codex e Claude Code, mantida por [@Thiago-Sartori85](https://github.com/Thiago-Sartori85).
 
-> **Segurança:** o conteúdo publicado é genérico e não deve conter dados pessoais, credenciais, segredos comerciais ou documentos de clientes. Apenas o mantenedor controla as alterações aceitas na branch `main`. Forks não modificam o repositório original.
+## Skill disponível
+- **[skill-juridica](skill-juridica/SKILL.md)** — análise preparatória de Direito de Família, patrimônio, pacto antenupcial, partilha, herança, testamento, usufruto e sucessões no Brasil. Não substitui advogado habilitado.
 
-## Skills disponíveis
-
-| Skill | Área | O que faz | Idioma |
-| --- | --- | --- | --- |
-| [`direito-familia-patrimonio-sucessoes`](skills/direito-familia-patrimonio-sucessoes/SKILL.md) | Direito brasileiro | Apoia análise de regimes de bens, pacto antenupcial, partilha, imóveis, participações societárias, testamentos, herança e usufruto, com checagem de normas e riscos. **Não substitui advogado.** | PT-BR |
-
-O catálogo cresce conforme novas skills próprias forem revisadas e publicadas. Ideias futuras: revisão de contratos SaaS, adaptação de currículo para ATS, engenharia full-stack com IA e marketing educacional.
-
-## Estrutura do repositório
+## Estrutura
 
 ```text
-skill-packs/
-├── README.md                       # Português
-├── README.en.md                    # English
-├── CONTRIBUTING.md                 # Política de contribuições
-├── SECURITY.md                     # Segurança e publicação responsável
-├── LICENSE
-├── .gitignore
-├── .github/
-│   ├── CODEOWNERS
-│   └── PULL_REQUEST_TEMPLATE.md
-├── skills/                          # Fonte canônica das skills
-│   ├── README.md                    # Como criar e revisar skills
-│   └── direito-familia-patrimonio-sucessoes/
-│       ├── SKILL.md
-│       ├── references/
-│       │   └── fontes-oficiais.md
-│       └── templates/
-│           └── checklist-advogado.md
-├── .agents/skills/                  # Pontos de entrada para Codex
-│   └── direito-familia-patrimonio-sucessoes/SKILL.md
-└── .claude/skills/                  # Pontos de entrada para Claude Code
-    └── direito-familia-patrimonio-sucessoes/SKILL.md
+claude-codex-skill-cotidiano/
+├── README.md
+├── README.en.md
+├── SECURITY.md
+├── .github/CODEOWNERS
+├── skill-juridica/
+│   ├── SKILL.md
+│   ├── references/fontes-oficiais.md
+│   └── templates/checklist-advogado.md
+├── .agents/skills/skill-juridica/SKILL.md
+└── .claude/skills/skill-juridica/SKILL.md
 ```
 
-A pasta `skills/` contém a **fonte única** das instruções. As pastas `.agents/skills/` e `.claude/skills/` contêm pontos de entrada que encaminham o agente para a fonte principal. **Mantenha o repositório completo** ao usá-los.
+A pasta `skill-juridica` é a fonte principal. As pastas ocultas contêm pontos de entrada de descoberta para Codex e Claude Code, que direcionam à fonte principal.
 
-## Como utilizar
-
-### Codex
+## Usar
 
 ```bash
-git clone https://github.com/Thiago-Sartori85/skill-packs.git
-cd skill-packs
+git clone https://github.com/Thiago-Sartori85/claude-codex-skill-cotidiano.git
+cd claude-codex-skill-cotidiano
 ```
 
-Abra o Codex **na raiz deste repositório**. Ele poderá descobrir os pontos de entrada em `.agents/skills/`. Para disponibilizar uma skill globalmente, copie a **pasta completa da fonte canônica** de `skills/<nome>/` para `~/.agents/skills/<nome>/`, em vez de copiar apenas o ponto de entrada.
+Abra o Codex ou Claude Code na raiz do repositório clonado. Para uso global em outros projetos, copie **a pasta inteira** `skill-juridica/` para `~/.agents/skills/skill-juridica/` (Codex) ou `~/.claude/skills/skill-juridica/` (Claude Code). Instalações locais não sincronizam automaticamente com a nuvem.
 
-### Claude Code
+## Política
+- Somente o mantenedor escolhe o que integrar na `main`; forks são permitidos e não alteram a origem.
+- Não inclua segredos, dados pessoais, patrimônios individuais ou projetos privados.
+- Revise qualquer PR antes de integração. `CODEOWNERS` não substitui proteção de branch.
+- Configure regras de proteção de `main` em **Settings → Rules → Rulesets**. [Detalhes](SECURITY.md).
+- Esta versão contém apenas instruções Markdown, sem scripts executáveis.
 
-Abra o Claude Code na raiz do repositório clonado. As skills ficam visíveis em `.claude/skills/`. Para instalação pessoal, copie a pasta completa de `skills/<nome>/` para `~/.claude/skills/<nome>/`.
-
-### GitHub e Codex Cloud
-
-Quando o agente trabalhar com um **checkout deste repositório** que inclua as pastas de integração, poderá ler a skill correspondente. Isso não implica instalação global nem sincronização automática com outros repositórios.
-
-## Modelo para novas skills
-
-Crie `skills/<nome>/SKILL.md` com frontmatter YAML contendo `name` e `description`. Adicione referências e templates conforme a necessidade. Crie também um ponto de entrada em **cada** uma das pastas de integração, atualize `README.md` e `README.en.md`, e revise as diretrizes de [segurança](SECURITY.md).
-
-## Governança
-
-- **Forks:** permitidos; não concedem acesso de escrita à `main` original.
-- **Pull requests:** propostas externas podem ser avaliadas; nenhum merge automático.
-- **Aprovação e publicação:** somente o mantenedor decide o que integrar.
-- **Execução de código:** nenhuma skill deve executar scripts ou instalar dependências sem revisão explícita.
-- **Licença:** [MIT](LICENSE); permite reutilização e modificações em forks, preservando os avisos de copyright.
-
-**Mantenedor:** [@Thiago-Sartori85](https://github.com/Thiago-Sartori85)
+**Nota:** nenhum material ou referência a projetos privados foi publicado.
