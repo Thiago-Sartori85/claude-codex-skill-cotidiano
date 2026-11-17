@@ -7,6 +7,10 @@ Coleção pública de Agent Skills para OpenAI Codex e Claude Code, mantida por 
 ## Skill disponível
 - **[skill-juridica](skill-juridica/SKILL.md)** — análise preparatória de Direito de Família, patrimônio, pacto antenupcial, partilha, herança, testamento, usufruto e sucessões no Brasil. Não substitui advogado habilitado.
 
+## Guias de desenvolvimento
+
+- **[Guia de skills para features e aplicações](docs/Guia_Skills_Claude_Codex_Features_Aplicacoes.md)** — roteiro em três blocos: arquitetura; specs e plans; implementação, testes e segurança. Inclui oito exemplos de etapas e um prompt reutilizável. É um guia de referência em português, não uma skill instalável; as skills citadas precisam estar disponíveis no ambiente.
+
 ## Estrutura
 
 ```text
