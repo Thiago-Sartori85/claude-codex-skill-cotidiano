@@ -7,6 +7,10 @@ Public Agent Skills collection for OpenAI Codex and Claude Code, maintained by [
 ## Available skill
 - **[skill-juridica](skill-juridica/SKILL.md)** — preliminary Brazilian family, matrimonial property, prenuptial agreement, estate and inheritance law research. Does not replace a licensed lawyer.
 
+## Development guides
+
+- **[Skills guide for features and applications](docs/Guia_Skills_Claude_Codex_Features_Aplicacoes.md)** — Portuguese reference guide covering architecture, specs and plans, implementation, testing and security. Includes eight example stages and a reusable prompt. This is documentation, not an installable skill; referenced skills must be available in your environment.
+
 ## Layout
 - `skill-juridica/SKILL.md`: canonical skill instructions.
 - `skill-juridica/references/`: official source index.
